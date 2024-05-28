@@ -5,7 +5,7 @@ import useFetch from "../hooks/useFetch";
 
 const Games = () => {
   const { data, loading, error } = useFetch(
-    "https://game-app-1.onrender.com/games/all"
+    `${process.env.REACT_APP_BACKEND_SERVER_URL}/games/all`
   );
   const navigate = useNavigate();
   return (

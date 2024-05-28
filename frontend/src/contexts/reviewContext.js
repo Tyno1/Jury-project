@@ -12,7 +12,7 @@ export const ReviewProvider = ({ children }) => {
   const sendReview = ({ location, gameId, comment, rating }) => {
     return new Promise((resolve, reject) => {
       axios
-        .post("https://game-app-1.onrender.com/reviews", {
+        .post(`${process.env.REACT_APP_BACKEND_SERVER_URL}/reviews`, {
           userId: user.user._id,
           location,
           gameId,
@@ -33,7 +33,7 @@ export const ReviewProvider = ({ children }) => {
   const getReview = () => {
     return new Promise((resolve, reject) => {
       axios
-        .get("https://game-app-1.onrender.com/reviews/all")
+        .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/reviews/all`)
         .then((res) => {
           resolve(res);
           setReviews(res.data);
@@ -47,7 +47,7 @@ export const ReviewProvider = ({ children }) => {
   const deleteReview = (reviewId) => {
     return new Promise((resolve, reject) => {
       axios
-        .delete(`https://game-app-1.onrender.com/reviews/${reviewId}`)
+        .delete(`${process.env.REACT_APP_BACKEND_SERVER_URL}/reviews/${reviewId}`)
         .then((res) => {
           resolve(res);
           // Optionally update the reviews state to reflect the deletion
@@ -59,20 +59,7 @@ export const ReviewProvider = ({ children }) => {
     });
   };
 
-  // confirm this is correct
-  // const getReviewByGameId = () => {
-  //   return new Promise((resolve, reject) => {
-  //     axios
-  //       .get(`http://localhost:3000/reviews/game/${gameId}`)
-  //       .then((res) => {
-  //         resolve(res);
-  //         setReviews(res.data);
-  //       })
-  //       .catch((err) => {
-  //         reject(err);
-  //       });
-  //   });
-  // };
+  
 
   useEffect(() => {
     getReview();

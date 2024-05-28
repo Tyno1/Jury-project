@@ -12,19 +12,19 @@ const Dashboard = () => {
     data: games,
     loading: gamesLoading,
     error: gamesError,
-  } = useFetch("https://game-app-1.onrender.com/games/all");
+  } = useFetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/games/all`);
 
   const {
     data: reviews,
     loading: reviewsLoading,
     error: reviewsError,
-  } = useFetch("https://game-app-1.onrender.com/reviews/all");
+  } = useFetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/reviews/all`);
 
   const {
     data: users,
     loading: usersLoading,
     error: usersError,
-  } = useFetch("https://game-app-1.onrender.com/users/all");
+  } = useFetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/users/all`);
 
   return (
     <div className="dash-container min-h-[100vh] w-full text-stone-100 flex-1 flex flex-row">

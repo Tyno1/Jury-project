@@ -43,7 +43,7 @@ const GameUpload = () => {
 
     if (payload) {
       axios
-        .post("https://game-app-1.onrender.com/games", payload, {
+        .post(`${process.env.REACT_APP_BACKEND_SERVER_URL}/games`, payload, {
           headers: { Authorization: user?.token },
         })
         .then((res) => {

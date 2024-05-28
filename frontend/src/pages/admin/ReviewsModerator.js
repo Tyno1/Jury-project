@@ -9,7 +9,7 @@ import Filter from "bad-words";
 const ReviewsModerator = () => {
   const filter = new Filter();
   const { data, loading, error, refresh } = useFetch(
-    "https://game-app-1.onrender.com/reviews/all"
+    `${process.env.REACT_APP_BACKEND_SERVER_URL}/reviews/all`
   );
 
   const { deleteReview } = useContext(ReviewContext);
