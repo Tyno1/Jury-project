@@ -10,7 +10,6 @@ import Layout from "./Layout";
 const Protected = () => {
   const { user, logout, decodeUserToken } = useContext(AuthContext);
   const location = useLocation();
-  // const { setIsSideOpened } = useNavContext();
   const navigate = useNavigate();
 
   useEffect(() => {

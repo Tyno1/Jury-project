@@ -7,11 +7,12 @@ export default function Footer() {
     <footer className="">
       <div className="mx-auto w-full px-4 py-16 sm:px-6 lg:px-8 text-stone-400 bg-black">
         <div className="flex flex-col items-center gap-4 rounded-lg bg-amber-500 p-6 shadow-lg sm:flex-row sm:justify-between">
-          <strong className="text-xl sm:text-xl text-stone-50">
+          <strong className="text-xl sm:text-xl text-white">
             Stay Up to date with The Jury
           </strong>
 
           <Link
+            aria-label="stay uodated"
             className="inline-flex items-center gap-2 rounded-full border border-white bg-stone-50 px-8 py-2 text-stone-900 hover:bg-transparent hover:text-white focus:outline-none active:bg-white/90 active:text-teal-600"
             to="/contact"
           >
@@ -138,9 +139,7 @@ export default function Footer() {
                   className="group flex justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
                   to="/"
                 >
-                  <span className="transition">
-                    Live Chat
-                  </span>
+                  <span className="transition">Live Chat</span>
 
                   <span className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"></span>
@@ -162,7 +161,6 @@ export default function Footer() {
                 className="text-teal-700 transition hover:text-teal-700/75"
               >
                 <span className="sr-only">Facebook</span>
-               
               </Link>
             </li>
 
@@ -174,7 +172,6 @@ export default function Footer() {
                 className="text-teal-700 transition hover:text-teal-700/75"
               >
                 <span className="sr-only">Instagram</span>
-              
               </Link>
             </li>
 
@@ -186,7 +183,6 @@ export default function Footer() {
                 className="text-teal-700 transition hover:text-teal-700/75"
               >
                 <span className="sr-only">Twitter</span>
-               
               </Link>
             </li>
 
@@ -198,7 +194,6 @@ export default function Footer() {
                 className="text-teal-700 transition hover:text-teal-700/75"
               >
                 <span className="sr-only">GitHub</span>
-               
               </Link>
             </li>
 
@@ -210,7 +205,6 @@ export default function Footer() {
                 className="text-teal-700 transition hover:text-teal-700/75"
               >
                 <span className="sr-only">Dribbble</span>
-               
               </Link>
             </li>
           </ul>

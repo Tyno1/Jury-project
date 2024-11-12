@@ -20,6 +20,7 @@ import Profile from "./pages/Profile";
 import GamesModerator from "./pages/admin/GamesModerator";
 import ScrollToTop from "./components/ScrollToTop";
 
+
 function App() {
   return (
     <div className="App bg-stone-950">
