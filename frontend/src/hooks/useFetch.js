@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 
 const useFetch = (url) => {
@@ -9,22 +9,25 @@ const useFetch = (url) => {
   const [shouldRefresh, setShouldRefresh] = useState(false);
   const { user } = useContext(AuthContext);
 
-  const refresh = () => setShouldRefresh(!shouldRefresh);
+  const refresh = useCallback(() => setShouldRefresh((prev) => !prev), []);
+
+  const FetchData = useCallback(async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(url, {
+        headers: { Authorization: user?.token },
+      });
+      setData(response.data);
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+      setLoading(false);
+    }
+  }, [url, user?.token]);
 
   useEffect(() => {
-    setLoading(true);
-
-    axios
-      .get(url, { headers: { Authorization: user?.token } })
-      .then((response) => {
-        setData(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
-  }, [url, shouldRefresh]);
+    FetchData();
+  }, [FetchData, shouldRefresh]);
 
   return { loading, error, data, refresh };
 };

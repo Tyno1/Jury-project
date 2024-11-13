@@ -7,6 +7,13 @@ import { AuthContext } from "../contexts/AuthContext";
 import { LocationContext } from "../contexts/locationContext";
 import { ReviewContext } from "../contexts/reviewContext";
 import useFetch from "../hooks/useFetch";
+import ClipLoader from "react-spinners/ClipLoader";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "#f59e0b",
+};
 
 const GameDetail = () => {
   const { id } = useParams();
@@ -32,7 +39,9 @@ const GameDetail = () => {
     loading: reviewLoading,
     error: reviewError,
     refresh,
-  } = useFetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/reviews/game/` + id);
+  } = useFetch(
+    `${process.env.REACT_APP_BACKEND_SERVER_URL}/reviews/game/` + id
+  );
 
   useEffect(() => {}, []);
 
@@ -80,7 +89,16 @@ const GameDetail = () => {
 
   return (
     <div className="review-page w-full">
-      {loading && <div> ...loadiing</div>}
+      {loading && (
+        <ClipLoader
+          color="amber-500"
+          loading={loading}
+          cssOverride={override}
+          size={150}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      )}{" "}
       {error && <div> {error}</div>}
       {data && (
         <div className="w-full min-h-[100vh] bg-stone-950 pt-14 md:pt-20 flex flex-col">
@@ -100,13 +118,13 @@ const GameDetail = () => {
               <p className="text-stone-100">
                 Available on:
                 <span className="border p-2 rounded-lg border-amber-500 mx-2">
-                        {data.gamePlatform &&
-                          data.gamePlatform.map((platform) => (
-                            <span className="border p-2 rounded-lg border-amber-500 mx-2">
-                              {platform}
-                            </span>
-                          ))}
+                  {data.gamePlatform &&
+                    data.gamePlatform.map((platform) => (
+                      <span className="border p-2 rounded-lg border-amber-500 mx-2">
+                        {platform}
                       </span>
+                    ))}
+                </span>
               </p>
 
               <div className="rating mt-6 flex items-center gap-2">

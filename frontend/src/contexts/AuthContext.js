@@ -65,38 +65,31 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
-  useEffect(() => {
-    if (!user) {
-      // window.
-    }
-  }, []);
+ 
 
-  const fetchUserTypes = () => {
-    // console.log(defaultUserType);
-    return new Promise((resolve, reject) => {
-      axios
-        .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}userTypes/all`)
-        .then((res) => {
-          resolve(res);
-          setDefaultUserType(
-            res.data.find((d) => d.name.toLowerCase() === "user")
-          );
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
-  };
+  // const fetchUserTypes = () => {
+  //   // console.log(defaultUserType);
+  //   return new Promise((resolve, reject) => {
+  //     axios
+  //       .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}userTypes/all`)
+  //       .then((res) => {
+  //         resolve(res);
+  //         setDefaultUserType(
+  //           res.data.find((d) => d.name.toLowerCase() === "user")
+  //         );
+  //       })
+  //       .catch((err) => {
+  //         reject(err);
+  //       });
+  //   });
+  // };
 
   const logout = () => {
     localStorage.clear();
     window.location.replace("/login");
   };
 
-  useEffect(() => {
-    // fetchUserTypes();
-  }, []);
-
+ 
   return (
     <AuthContext.Provider
       value={{

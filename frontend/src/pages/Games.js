@@ -2,6 +2,13 @@ import React from "react";
 import { IoMdStar } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import ClipLoader from "react-spinners/ClipLoader";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "#f59e0b",
+};
 
 const Games = () => {
   const { data, loading, error } = useFetch(
@@ -17,9 +24,18 @@ const Games = () => {
             Reviews and Ratings are determined by Jury Users
           </p>
         </div>
-        <div className="inner-container-1 mt-10 px-10 flex flex-col gap-4">
+        <div className="inner-container-1 mt-10 px-10 flex flex-col gap-4 h-full">
           {/* items */}
-          {loading && <p>Loading...</p>}
+          {loading && (
+            <ClipLoader
+              color="amber-500"
+              loading={loading}
+              cssOverride={override}
+              size={150}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          )}
           {error && <div className=""> {error.message} </div>}
           {data &&
             data.map((game) => (

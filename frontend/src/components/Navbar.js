@@ -41,7 +41,7 @@ export default function Navbar() {
   useOutsideClick(mobileRef, closeMobile);
 
   return (
-    <nav className="navbar h-20 md:h-20 fixed left-0 right-0 py-7 px-7 flex items-center shadow-lg backdrop-blur-lg bg-black text-amber-500 z-50">
+    <nav className="navbar w-[100vw] h-20 md:h-20 fixed left-0 right-0 py-7 px-7 flex items-center shadow-lg backdrop-blur-lg bg-black text-amber-500 z-50">
       <Link
         className="font-bold text-3xl text-amber-500"
         to="/"
@@ -66,7 +66,7 @@ export default function Navbar() {
               className="drop-down absolute top-20 right-0 z-50 w-56 bg-stone-950 px-5 py-2 rounded-sm shadow-2xl"
               role="menu"
             >
-              <ul className="links flex flex-col">
+              <ul className="links flex flex-col gap-4">
                 <li role="menuitem">
                   <Link to="/" onClick={closeMenu} aria-label="Home">
                     Home
@@ -113,7 +113,7 @@ export default function Navbar() {
               role="menu"
             >
               {user ? (
-                <ul>
+                <ul className="flex flex-col gap-4">
                   <li role="menuitem">
                     {decodeUserToken()?.userType?.name === "ADMIN" ? (
                       <Link
@@ -146,7 +146,7 @@ export default function Navbar() {
                   </li>
                 </ul>
               ) : (
-                <ul>
+                <ul className="flex flex-col gap-4">
                   <li role="menuitem">
                     <Link onClick={closeMenu} to="/login" aria-label="Login">
                       Login
@@ -169,7 +169,7 @@ export default function Navbar() {
       </div>
 
       {/* icons on web */}
-      <div className="ml-auto">
+      <div className="ml-auto hidden md:flex ">
         <ul role="menubar" className="hidden md:flex gap-6 items-center">
           <li role="menuitem">
             <Link to="/" aria-label="Home">

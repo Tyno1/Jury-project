@@ -67,10 +67,7 @@ const Protected = () => {
               </li>
 
               <li className="pt-2 pt-2 pb-4 border-solid mb-2 border-b-2 border-gray-800 ">
-                <Link
-                  className="flex gap-4 items-center"
-                  to="/admin/games-mod"
-                >
+                <Link className="flex gap-4 items-center" to="/admin/games-mod">
                   <MdRemoveModerator size={30} className="text-amber-500" />
                   <p>Games Moderator</p>
                 </Link>
